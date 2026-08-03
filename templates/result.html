@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Analysis Result{% endblock %}
+{% block content %}
+<h1>Results for {{ job_title }}</h1>
+<p>Resume: {{ filename }}</p>
+
+<div class="score-circle">{{ result.score }}%</div>
+<p class="score-label">ATS Compatibility Score</p>
+
+<div class="skills-grid">
+    <div>
+        <h3>✅ Matched Skills</h3>
+        {% if result.matched %}
+        <ul>
+            {% for skill in result.matched %}<li>{{ skill }}</li>{% endfor %}
+        </ul>
+        {% else %}
+        <p>No matches found.</p>
+        {% endif %}
+    </div>
+    <div>
+        <h3>❌ Missing Skills</h3>
+        {% if result.missing %}
+        <ul>
+            {% for skill in result.missing %}<li>{{ skill }}</li>{% endfor %}
+        </ul>
+        {% else %}
+        <p>Great — nothing missing!</p>
+        {% endif %}
+    </div>
+</div>
+
+<a class="btn" href="{{ url_for('analyze') }}">Run another analysis</a>
+<a class="btn secondary" href="{{ url_for('dashboard') }}">Back to dashboard</a>
+{% endblock %}

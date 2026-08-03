@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h1>Welcome, {{ username }}</h1>
+<a class="btn" href="{{ url_for('analyze') }}">+ New Analysis</a>
+
+<h2>Your analysis history</h2>
+{% if history %}
+<table class="history-table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Job Title</th>
+            <th>Resume File</th>
+            <th>ATS Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in history %}
+        <tr>
+            <td>{{ row.created_at }}</td>
+            <td>{{ row.job_title }}</td>
+            <td>{{ row.resume_filename }}</td>
+            <td><span class="score">{{ row.ats_score }}%</span></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No analyses yet. Run your first one!</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}New Analysis{% endblock %}
+{% block content %}
+<h1>Analyze a resume</h1>
+<form method="POST" enctype="multipart/form-data" class="analyze-form">
+    <label>Job Title</label>
+    <input type="text" name="job_title" placeholder="e.g. Backend Developer">
+
+    <label>Resume (PDF)</label>
+    <input type="file" name="resume" accept=".pdf" required>
+
+    <label>Job Description</label>
+    <textarea name="job_description" rows="10" placeholder="Paste the job description here..." required></textarea>
+
+    <button type="submit">Analyze</button>
+</form>
+{% endblock %}
