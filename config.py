@@ -1,10 +1,3 @@
-"""
-App configuration.
-
-For a real project, don't hardcode secrets/passwords here — use
-environment variables instead. Kept simple here so it's easy to
-read as a beginner.
-"""
 
 import os
 
